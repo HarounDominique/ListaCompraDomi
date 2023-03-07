@@ -40,6 +40,7 @@ fun ScaffoldScreen() {
             )
         }
     ) {
+
         MyLazyColumn(Modifier.padding(it))
     }
 }
