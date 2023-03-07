@@ -4,12 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.listacompradomi.ui.theme.ListaCompraDomiTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    ScaffoldScreen()
                 }
             }
         }
@@ -30,14 +32,23 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun ScaffoldScreen() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Lista de la compra") }
+            )
+        }
+    ) {
+        MyLazyColumn(Modifier.padding(it))
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ListaCompraDomiTheme {
-        Greeting("Android")
+        ScaffoldScreen()
     }
 }
